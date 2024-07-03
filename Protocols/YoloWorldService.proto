@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+service YoloWorldService {
+  rpc Detect (DetectionRequest) returns (DetectionResponse);
+  rpc Label (LabelRequest) returns (LabelResponse);
+}
+
+message ObjectData {
+  int32 ClassId = 1;
+  double Confidence = 2;
+  double CenterX = 3;
+  double CenterY = 4;
+  double BoundingWidth = 5;
+  double BoundingHeight = 6;
+}
+
+message DetectionRequest {
+  string ClientName = 1;
+  repeated string ClassNames = 2;
+  bytes JpegImage = 3;
+}
+
+message DetectionResponse {
+  repeated ObjectData Objects = 1;
+}
+
+message LabelRequest {
+  string ClientName = 1;
+  repeated string ClassNames = 2;
+  bytes JpegImage = 3;
+}
+
+message LabelResponse {
+  bytes JpegImage = 1;
+}

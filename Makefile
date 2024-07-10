@@ -1,6 +1,6 @@
 IMAGE_NAME="jsk-services/deep-speaker-service"
 CONTAINER_NAME="deep-speaker-service"
-SERVICE_PORT=9001
+SERVICE_PORT=9000
 
 build:
 	docker build -t $(IMAGE_NAME) .

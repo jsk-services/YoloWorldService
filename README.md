@@ -24,3 +24,19 @@ Image should be passed in the `JpegImage` field, in the form of bytes of JPEG fo
 
 `Lable` method is basically same to `Detect` method, the only difference is this method is designed for quick test,
 so it will return the result image where detected objects are labeled.
+
+## Client
+
+Package `yolo_world_client` provides a client class `YoloWorldClient`, 
+which wraps the process of image encoding and decoding.
+
+## Makefile
+
+Use `make run` to build the Docker image and start a Docker container on your machine.
+
+Use `make clean` to stop the container, and then delete the container and image from your machine.
+
+You can customize the image and the container with following three variable of the Makefile:
+- IMAGE_NAME: the tag of the image built by 'build' command.
+- CONTAINER_NAME: the name of the container started by 'run' command.
+- SERVICE_PORT: the port which the service will be listening on.

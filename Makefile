@@ -1,5 +1,5 @@
-IMAGE_NAME="jsk-services/deep-speaker-service"
-CONTAINER_NAME="deep-speaker-service"
+IMAGE_NAME="jsk-services/yolo-world-service"
+CONTAINER_NAME="yolo-world-service"
 SERVICE_PORT=9000
 
 build:

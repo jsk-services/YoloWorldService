@@ -46,7 +46,7 @@ class YoloWorldServer(YoloWorldService_pb2_grpc.YoloWorldServiceServicer):
         self.log("Detection request received.",
                  bytes_size=len(request.JpegImage),
                  client=request.ClientName)
-        image = cv2.imdecode(numpy.frombuffer(request.JpegImage, dtype=numpy.uint8), cv2.IMREAD_COLOR).imag
+        image = cv2.imdecode(numpy.frombuffer(request.JpegImage, dtype=numpy.uint8), cv2.IMREAD_COLOR)
         self.log("Original image decoded.", shape=image.shape)
         model = self.get_model(request.ClientName)
         model.set_classes(request.ClassNames)
@@ -55,12 +55,12 @@ class YoloWorldServer(YoloWorldService_pb2_grpc.YoloWorldServiceServicer):
         response = DetectionResponse()
         response.Objects.extend([
                 ObjectData(
-                    int(results.boxes.cls[index]),
-                    float(results.boxes.confidence[index]),
-                    float(results.boxes.xywh[index, 0]),
-                    float(results.boxes.xywh[index, 1]),
-                    float(results.boxes.xywh[index, 2]),
-                    float(results.boxes.xywh[index, 3])
+                    ClassId=int(results.boxes.cls[index]),
+                    Confidence=float(results.boxes.conf[index]),
+                    CenterX=float(results.boxes.xywh[index, 0]),
+                    CenterY=float(results.boxes.xywh[index, 1]),
+                    BoundingWidth=float(results.boxes.xywh[index, 2]),
+                    BoundingHeight=float(results.boxes.xywh[index, 3])
                 ) for index in range(count)
             ])
         self.log("Detection finished.")

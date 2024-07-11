@@ -1,0 +1,7 @@
+grpcio
+grpcio-tools
+opencv-python~=4.10.0.84
+numpy~=1.26.3
+pymongo~=4.8.0
+cachetools~=5.3.3
+ultralytics~=8.2.48
